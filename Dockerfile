@@ -7,7 +7,7 @@ RUN rustup default nightly
 WORKDIR /app
 RUN git clone https://github.com/pacman-repo-builder/pacman-repo-builder.git
 WORKDIR /app/pacman-repo-builder
-RUN cargo build --bin=build-pacman-repo --release
+RUN rustup override set nightly && cargo build --bin=build-pacman-repo --release
 RUN cp target/release/build-pacman-repo /usr/bin/build-pacman-repo
 RUN chmod +x /usr/bin/build-pacman-repo
 
