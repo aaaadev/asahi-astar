@@ -1,0 +1,3 @@
+[submodule "build/ungoogled-chromium-archlinux"]
+	path = build/ungoogled-chromium-archlinux
+	url = https://github.com/aaaadev/ungoogled-chromium-archlinux
