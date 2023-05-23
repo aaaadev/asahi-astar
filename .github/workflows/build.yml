@@ -1,0 +1,31 @@
+name: Build asahi-astar
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    
+      - name: Check Out Repo 
+        uses: actions/checkout@v2
+
+      - name: Login to Astar Registry
+        uses: docker/login-action@v2
+        with:
+          registry: docker.astar.moe
+          username: ${{ secrets.DOCKER_ASTAR_USERNAME }}
+          password: ${{ secrets.DOCKER_ASTAR_ACCESS_TOKEN }}
+
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: docker.astar.moe/asahi-astar:latest
