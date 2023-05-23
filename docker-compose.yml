@@ -1,0 +1,11 @@
+services:
+  build-pacman-repo:
+    build: .
+    environment:
+      - INPUT_COMMAND=build-pacman-repo build
+      - MAKEFLAGS=j16
+      - DISTCC_HOSTS=192.168.0.107
+    volumes:
+      - ./repo:/app/repo:z
+      - ./build-directories:/app/build-directories:z
+      - ./build-pacman-repo.yaml:/app/build-pacman-repo.yaml:z

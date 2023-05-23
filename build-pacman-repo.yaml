@@ -1,0 +1,18 @@
+# build-pacman-repo.yaml
+global-settings:
+  repository: repo/asahi-astar.db.tar.gz
+  container: build
+  read-build-metadata: either
+  record-failed-builds: failed-builds.yaml
+  install-missing-dependencies: true
+  clean-before-build: true
+  clean-after-build: false
+  force-rebuild: true
+  pacman: pacman
+  arch-filter: [aarch64]
+  check: inherit
+  packager: Yeri Kim <astar@astar.moe>
+  allow-failure: true
+  dereference-database-symlinks: true
+members:
+  - directory: ungoogled-chromium-archlinux
