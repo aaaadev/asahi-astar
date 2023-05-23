@@ -2,8 +2,8 @@ FROM menci/archlinuxarm:base-devel
 
 RUN mkdir /app
 RUN pacman -Syu --noconfirm
-RUN pacman -S --noconfirm --needed --overwrite '*' bash rustup git gcc llvm pkgconf distcc
-RUN rustup default stable
+RUN pacman -S --noconfirm --needed --overwrite '*' bash git gcc llvm pkgconf distcc curl
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain nightly
 WORKDIR /app
 RUN git clone https://github.com/pacman-repo-builder/pacman-repo-builder.git
 WORKDIR /app/pacman-repo-builder
