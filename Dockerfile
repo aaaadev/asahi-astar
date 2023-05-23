@@ -1,7 +1,5 @@
 FROM menci/archlinuxarm:base-devel
 
-COPY pacman.conf /etc/pacman.conf
-
 RUN mkdir /app
 RUN pacman -Syu --noconfirm
 RUN pacman -S --noconfirm --needed --overwrite '*' bash rustup git gcc llvm pkgconf distcc

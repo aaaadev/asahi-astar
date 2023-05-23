@@ -3,8 +3,8 @@ services:
     build: .
     environment:
       - INPUT_COMMAND=build-pacman-repo build
-      - MAKEFLAGS=j16
-      - DISTCC_HOSTS=192.168.0.107
+      - MAKEFLAGS=j20
+      - DISTCC_HOSTS=192.168.0.107:3632 146.56.119.187:3632
     volumes:
       - ./repo:/app/repo:z
       - ./build-directories:/app/build-directories:z
